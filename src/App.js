@@ -26,14 +26,18 @@ export default class App extends React.Component {
    else{
     this.setState({
       name: this.state.text
-    })
+    });
    }
+ }
+
+ componentDidUpdate(){
+   console.info(this.state)
  }
 
   render(){
   return (
     <div>
-      <h1>Привет{this.state.name === ('') ? '. Укажи свое имя' :  ', ' + this.state.name}!</h1>
+      <h1>{this.state.name === ('') ? 'Для приветствия нужно твоё имя. Укажи его ниже' :  'Привет, ' + this.state.name}!</h1>
       <input type="text" value={this.state.text} onChange={this.handlerInput}></input>
       <button onClick={this.handlerAssignName}>Указать имя</button>
     </div>
